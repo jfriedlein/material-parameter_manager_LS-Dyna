@@ -15,6 +15,8 @@ c
 c
       counter = 1
 c
+c ### Data Pt. 1 ###
+c    
 c 1. Parameter: First Lame parameter lame_lambda
       list_name(counter) = 'lame_lambda_____'
       list_index(counter) = counter
@@ -63,6 +65,8 @@ c 8. Parameter: Hardening type hardening_type
 c
       counter = counter +1
 c
+c ### Data Pt. 2 ###
+c    
 c 9. Parameter: Anisotropic plasticity on/off
       list_name(counter) = 'anisotropy______'
       list_index(counter) = counter
@@ -111,8 +115,10 @@ c 16. Parameter: Sheet orientation
 c
       counter = counter +1
 c
+c ### Data Pt. 3 ###
+c    
 
-c      
+c Retrieve the index
       do i=1,maxval(list_index)
           ! Look for the nameX in the list of names to find the index 'i'
           if ( index(nameX,trim(list_name(i))) /= 0 ) then

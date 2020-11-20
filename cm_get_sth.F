@@ -23,7 +23,7 @@ c 1. Parameter: First Lame parameter lame_lambda
 c
       counter = counter +1
 c
-c 2. Parameter: Second Lame parameter lame_lambda
+c 2. Parameter: Second Lame parameter shearMod_mu
       list_name(counter) = 'shearMod_mu_____'
       list_index(counter) = counter
 c

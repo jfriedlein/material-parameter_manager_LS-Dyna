@@ -17,8 +17,9 @@ c
 c
 c ### Data Pt. 1 ###
 c    
-c 1. Parameter: First Lame parameter lame_lambda
-      list_name(counter) = 'lame_lambda_____'
+c 1. Parameter: Bulk modulus kappa
+      !list_name(counter) = 'lame_lambda_____'
+      list_name(counter) ='bulkMod_kappa___'
       list_index(counter) = counter
 c
       counter = counter +1

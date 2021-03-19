@@ -5,12 +5,13 @@ c
 c
 c     @note
 c     When you change something, remember to change the length of the arrays ("dimension") as well as
-c     the number of characters (len) if needed.
+c     the number of characters (len) if needed. (right now the dimension is 17, so we have 17 parameters)
+c     Else you will get a segmentation violation, if the dimension is too small
 c
       character(len=16), intent(in) :: nameX
       ! !!! When you change the parameters, then you have to update the following TWO dimensions (=nbr of parameters) !!!!
-      character(len=16), dimension(16) :: list_name ! needs to contains 16 characters (filled by underscores)
-      integer, dimension(16) :: list_index
+      character(len=16), dimension(17) :: list_name ! needs to contains 16 characters (filled by underscores)
+      integer, dimension(17) :: list_index
       integer :: i, counter
 c
       counter = 1
@@ -116,6 +117,12 @@ c 16. Parameter: Sheet orientation
 c
       counter = counter +1
 c
+c 17. Parameter: Exponent for "linear" part
+      list_name(counter) = 'hardExponent_n__'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
 c ### Data Pt. 3 ###
 c    
 
@@ -126,8 +133,13 @@ c Retrieve the index
               cm_get_sth = list_index(i)
               exit
           elseif ( i == maxval(list_index) ) then
-              write(*,*) "cm_get_sth<< Could not find the nameX:", nameX
-              pause
+c              if ( index(nameX,trim('lame_lambda_____')) /= 0 ) then
+c                  cm_get_sth = 1
+c              exit
+c              else
+            write(*,*) "cm_get_sth<< Could not find the nameX:", nameX
+                  pause
+c              endif
           endif
       enddo
 c

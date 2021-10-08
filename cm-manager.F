@@ -1,3 +1,7 @@
+!DEC$ IF .NOT. DEFINED (cm_manager_F)
+!DEC$ DEFINE cm_manager_F
+! -----------MODULE material parameter manager----------------------------
+
       module cm_manager
 c @todo Rework this docu for material parameters
 c Usage
@@ -48,7 +52,8 @@ c @todo Find a way to use the interfaces (still getting the ambiguous error)
 
 !      ------BEGIN FUNCTIONS-------------------------------------
 !      ------CENTRAL EXTRACTION OF CM----------------------------
-       include '.\cm_get_sth.F'
+       include './cm_get_sth.F'
                               ! How to remember the argument lists for 'get':
-       include '.\cm_get_X.F' ! get me 'nameX' from 'cm' 
+       include './cm_get_X.F' ! get me 'nameX' from 'cm'
       end module cm_manager
+!DEC$ ENDIF

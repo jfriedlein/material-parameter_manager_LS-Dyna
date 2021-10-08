@@ -13,7 +13,7 @@ c
       integer, dimension(:), allocatable :: list_index
       integer :: i, counter, n_entries
 c
-      n_entries = 23
+      n_entries = 24
       counter = 1
 c
       allocate(list_name(n_entries))
@@ -128,48 +128,48 @@ c 17. Parameter: damage on/off
 c
       counter = counter +1
 c
-c 18. Parameter: damage saturation parameter eta1
+c 18. Parameter: damage type
+      list_name(counter) = 'dmg_type_______'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
+c 19. Parameter: damage saturation parameter eta1
       list_name(counter) = 'dmg_prm_eta1___'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c 19. Parameter: damage saturation parameter eta2
+c 20. Parameter: damage saturation parameter eta2
       list_name(counter) = 'dmg_prm_eta2___'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c 20. Parameter: damage saturation parameter eta3
+c 21. Parameter: damage saturation parameter eta3
       list_name(counter) = 'dmg_prm_eta3___'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c 21. Parameter: damage saturation parameter eta4
+c 22. Parameter: damage saturation parameter eta4
       list_name(counter) = 'dmg_prm_eta4___'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c 22. Parameter: plasticity threshold for damage initiation
+c 23. Parameter: plasticity threshold for damage initiation
       list_name(counter) = 'alpha_crit_____'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c 23. Parameter: Exponent for "linear" part
+c 24. Parameter: Exponent for "linear" part
       list_name(counter) = 'dmg_exponent___'
       list_index(counter) = counter
 c
       counter = counter +1
 c      
-!c 24. Parameter: 
-!      list_name(counter) = ''
-!      list_index(counter) = counter
-!c
-!      counter = counter +1
-!c       
 c
 c ### Data Pt. 4 ###
 c        

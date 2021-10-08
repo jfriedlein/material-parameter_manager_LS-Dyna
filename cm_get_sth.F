@@ -5,17 +5,20 @@ c
 c
 c     @note
 c     When you change something, remember to change the length of the arrays ("dimension") as well as
-c     the number of characters (len) if needed. (right now the dimension is 17, so we have 17 parameters)
+c     the number of characters (len) if needed. (right now the dimension is 23, so we have 23 parameters)
 c     Else you will get a segmentation violation, if the dimension is too small
 c
       character(len=16), intent(in) :: nameX
-      ! !!! When you change the parameters, then you have to update the following TWO dimensions (=nbr of parameters) !!!!
-      character(len=16), dimension(17) :: list_name ! needs to contains 16 characters (filled by underscores)
-      integer, dimension(17) :: list_index
-      integer :: i, counter
+      character(len=16), dimension(:), allocatable :: list_name ! needs to contains 16 characters (filled by underscores)
+      integer, dimension(:), allocatable :: list_index
+      integer :: i, counter, n_entries
 c
+      n_entries = 23
       counter = 1
 c
+      allocate(list_name(n_entries))
+      allocate(list_index(n_entries))
+c      
 c ### Data Pt. 1 ###
 c    
 c 1. Parameter: Bulk modulus kappa
@@ -49,14 +52,14 @@ c 5. Parameter: Hardening stress hardStress_R_inf
 c
       counter = counter +1
 c
-c 6. Parameter: Exp. hardening modulues hardMod_K_exp
+c 6. Parameter: Exp. hardening modulus hardMod_K_exp
       list_name(counter) = 'hardMod_K_exp___'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c 7. Parameter: finite strain on/off
-      list_name(counter) = 'finiteStrain____'
+c 7. Parameter:  Exponent for "linear" part
+      list_name(counter) = 'hardExponent_n__'
       list_index(counter) = counter
 c
       counter = counter +1
@@ -117,15 +120,65 @@ c 16. Parameter: Sheet orientation
 c
       counter = counter +1
 c
-c 17. Parameter: Exponent for "linear" part
-      list_name(counter) = 'hardExponent_n__'
+c ### Data Pt. 3 ###
+c   
+c 17. Parameter: damage on/off
+      list_name(counter) = 'dmg_active_____'
       list_index(counter) = counter
 c
       counter = counter +1
 c
-c ### Data Pt. 3 ###
-c    
-
+c 18. Parameter: damage saturation parameter eta1
+      list_name(counter) = 'dmg_prm_eta1___'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
+c 19. Parameter: damage saturation parameter eta2
+      list_name(counter) = 'dmg_prm_eta2___'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
+c 20. Parameter: damage saturation parameter eta3
+      list_name(counter) = 'dmg_prm_eta3___'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
+c 21. Parameter: damage saturation parameter eta4
+      list_name(counter) = 'dmg_prm_eta4___'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
+c 22. Parameter: plasticity threshold for damage initiation
+      list_name(counter) = 'alpha_crit_____'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c
+c 23. Parameter: Exponent for "linear" part
+      list_name(counter) = 'dmg_exponent___'
+      list_index(counter) = counter
+c
+      counter = counter +1
+c      
+!c 24. Parameter: 
+!      list_name(counter) = ''
+!      list_index(counter) = counter
+!c
+!      counter = counter +1
+!c       
+c
+c ### Data Pt. 4 ###
+c        
+!c 25. Parameter:  finite strain on/off
+!      list_name(counter) = 'finiteStrain____'
+!      list_index(counter) = counter
+!c
+!      counter = counter +1
+!c      
 c Retrieve the index
       do i=1,maxval(list_index)
           ! Look for the nameX in the list of names to find the index 'i'

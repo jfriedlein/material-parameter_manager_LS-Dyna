@@ -55,5 +55,6 @@ c @todo Find a way to use the interfaces (still getting the ambiguous error)
        include './cm_get_sth.F'
                               ! How to remember the argument lists for 'get':
        include './cm_get_X.F' ! get me 'nameX' from 'cm'
+       include './cm_merge.F'
       end module cm_manager
 !DEC$ ENDIF

@@ -1,198 +1,147 @@
 c ########################################################################################
-      integer function cm_get_sth(nameX)
+      function cm_get_sth(nameX) RESULT(index_pair)
+c
+      ! @todo Create the "list_name" only once and utilise the "cm_version"
+      ! to set up the correct version, however to do the latter we need the value of "cm"
 c
       implicit none
 c
-c     @note
-c     When you change something, remember to change the length of the arrays ("dimension") as well as
-c     the number of characters (len) if needed. (right now the dimension is 23, so we have 23 parameters)
-c     Else you will get a segmentation violation, if the dimension is too small
 c
       character(len=16), intent(in) :: nameX
-      character(len=16), dimension(:), allocatable :: list_name ! needs to contains 16 characters (filled by underscores)
-      integer, dimension(:), allocatable :: list_index
-      integer :: i, counter, n_entries
+      integer, dimension(2) :: index_pair
+      character(len=16), dimension(:,:), allocatable :: list_name ! needs to contains 16 characters (filled by underscores)
+      integer :: i, j, n_entries_per_row, n_rows
 c
-      n_entries = 24
-      counter = 1
+      n_rows = 2 ! first row: "cm", second row: "cma"
+      n_entries_per_row = 48
 c
-      allocate(list_name(n_entries))
-      allocate(list_index(n_entries))
-c      
-c ### Data Pt. 1 ###
+      !allocate(index_pair(n_rows))
+      allocate(list_name(n_rows,n_entries_per_row))
+      list_name='________________'
+c
+c
+c ################################# cm #################################
+c
+c ############################## Data Pt. 1 ############################
+c Elasticity, general settings
 c    
-c 1. Parameter: Bulk modulus kappa
-      !list_name(counter) = 'lame_lambda_____'
-      list_name(counter) ='bulkMod_kappa___'
-      list_index(counter) = counter
+c Bulk modulus kappa
+      list_name(1,1) ='bulkMod_kappa___'
+c Second Lame parameter shearMod_mu
+      list_name(1,2) = 'shearMod_mu_____'
+c hsv-version
+      list_name(1,8) = 'cm_version______'
 c
-      counter = counter +1
+c ############################## Data Pt. 2 ############################
+c plasticity and isotropic hardening
 c
-c 2. Parameter: Second Lame parameter shearMod_mu
-      list_name(counter) = 'shearMod_mu_____'
-      list_index(counter) = counter
+c Hardening type hardening_type
+      list_name(1,9) = 'hardening_type__'
+c Yield stress yieldStress
+      list_name(1,10) = 'yieldStress_____'
+c Hardening modulus hardMod_K
+      list_name(1,11) = 'hardMod_K_______'
+c Hardening stress hardStress_R_inf
+      list_name(1,12) = 'hardStress_R_inf'
+c Exp. hardening modulus hardMod_K_exp
+      list_name(1,13) = 'hardMod_K_exp___'
+c Exponent for "linear" part
+      list_name(1,14) = 'hardExponent_n__'
 c
-      counter = counter +1
+c ############################## Data Pt. 3 ############################
+c kinematic plastic hardening
+c ...
 c
-c 3. Parameter: Hardening modulus hardMod_K
-      list_name(counter) = 'hardMod_K_______'
-      list_index(counter) = counter
+c ############################## Data Pt. 4 ############################
+c plastic anisotropy
 c
-      counter = counter +1
+c Anisotropic plasticity type
+      list_name(1,25) = 'anisotropy______'
+c Vector for rolling direction: x-component
+      list_name(1,26) = 'rolling_dir_x___'
+c Vector for rolling direction: y-component
+      list_name(1,27) = 'rolling_dir_y___'
+c Vector for rolling direction: z-component
+      list_name(1,28) = 'rolling_dir_z___'
+c Vector for normal direction: x-component
+      list_name(1,29) = 'normal_dir_x____'
+c Vector for normal direction: y-component
+      list_name(1,30) = 'normal_dir_y____'
+c Vector for normal direction: z-component
+      list_name(1,31) = 'normal_dir_z____'
 c
-c 4. Parameter: Yield stress yieldStress
-      list_name(counter) = 'yieldStress_____'
-      list_index(counter) = counter
+c ############################## Data Pt. 5 ############################
+c damage
 c
-      counter = counter +1
+c damage type
+      list_name(1,33) = 'dmg_type_______'
+c h_TC for MCR
+      list_name(1,36) = 'MCR_hTC________'
 c
-c 5. Parameter: Hardening stress hardStress_R_inf
-      list_name(counter) = 'hardStress_R_inf'
-      list_index(counter) = counter
 c
-      counter = counter +1
+c ################################# cma ################################
 c
-c 6. Parameter: Exp. hardening modulus hardMod_K_exp
-      list_name(counter) = 'hardMod_K_exp___'
-      list_index(counter) = counter
+c ############################## Data Pt. 1 ############################
+c anisotropy coefficients
+c Hill coefficient "h_11" or Yld91 "a"
+      list_name(2,1) = 'aniso_coeff_11__'
+c Hill coefficient "h_22" or Yld91 "b"
+      list_name(2,2) = 'aniso_coeff_22__'
+c Hill coefficient "h_33" or Yld91 "c"
+      list_name(2,3) = 'aniso_coeff_33__'
+c Hill coefficient "h_12" or Yld91 "h"
+      list_name(2,4) = 'aniso_coeff_12__'
+c Hill coefficient "h_23" or Yld91 "f"
+      list_name(2,5) = 'aniso_coeff_23__'
+c Hill coefficient "h_31" or Yld91 "g"
+      list_name(2,6) = 'aniso_coeff_31__'
 c
-      counter = counter +1
+c ############################## Data Pt. 1 ############################
+c additional anisotropy coefficients
+c Hill coefficient "h_11" for stress
+      list_name(2,9)  = 'aniso_coeff_11_2'
+c Hill coefficient "h_22" for stress
+      list_name(2,10) = 'aniso_coeff_22_2'
+c Hill coefficient "h_33" for stress
+      list_name(2,11) = 'aniso_coeff_33_2'
+c Hill coefficient "h_12" for stress
+      list_name(2,12) = 'aniso_coeff_12_2'
+c Hill coefficient "h_23" for stress
+      list_name(2,13) = 'aniso_coeff_23_2'
+c Hill coefficient "h_31" for stress
+      list_name(2,14) = 'aniso_coeff_31_2'
 c
-c 7. Parameter:  Exponent for "linear" part
-      list_name(counter) = 'hardExponent_n__'
-      list_index(counter) = counter
+c ############################## Data Pt. 2 ############################
+c additional damage parameters
+c damage saturation parameter eta1
+      list_name(2,17) = 'dmg_prm_eta1___'
+c damage saturation parameter eta2
+      list_name(2,18) = 'dmg_prm_eta2___'
+c damage saturation parameter eta3
+      list_name(2,19) = 'dmg_prm_eta3___'
+c damage saturation parameter eta4
+      list_name(2,20) = 'dmg_prm_eta4___'
+c threshold for damage initiation
+      list_name(2,21) = 'dmg_threshold__'
+c exponent for damage evolution
+      list_name(2,22) = 'dmg_exponent___'
 c
-      counter = counter +1
 c
-c 8. Parameter: Hardening type hardening_type
-      list_name(counter) = 'hardening_type__'
-      list_index(counter) = counter
+c ######################## retrieve the correct index ##################
 c
-      counter = counter +1
-c
-c ### Data Pt. 2 ###
-c    
-c 9. Parameter: Anisotropic plasticity on/off
-      list_name(counter) = 'anisotropy______'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 10. Parameter: Hill coefficients h11
-      list_name(counter) = 'HillCoeff_h11___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 11. Parameter: Hill coefficients h22
-      list_name(counter) = 'HillCoeff_h22___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 12. Parameter: Hill coefficients h33
-      list_name(counter) = 'HillCoeff_h33___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 13. Parameter: Hill coefficients h12
-      list_name(counter) = 'HillCoeff_h12___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 14. Parameter: Hill coefficients h23
-      list_name(counter) = 'HillCoeff_h23___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 15. Parameter: Hill coefficients h31
-      list_name(counter) = 'HillCoeff_h31___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 16. Parameter: Sheet orientation
-      list_name(counter) = 'sheetOrientation'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c ### Data Pt. 3 ###
-c   
-c 17. Parameter: damage type
-      list_name(counter) = 'dmg_type_______'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 18. Parameter: damage saturation parameter eta1
-      list_name(counter) = 'dmg_prm_eta1___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 19. Parameter: damage saturation parameter eta2
-      list_name(counter) = 'dmg_prm_eta2___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 20. Parameter: damage saturation parameter eta3
-      list_name(counter) = 'dmg_prm_eta3___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 21. Parameter: damage saturation parameter eta4
-      list_name(counter) = 'dmg_prm_eta4___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 22. Parameter: plasticity threshold for damage initiation
-      list_name(counter) = 'alpha_crit_____'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 23. Parameter: Exponent for damage evolution
-      list_name(counter) = 'dmg_exponent___'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c 24. Parameter: h_TC for MCR
-      list_name(counter) = 'MCR_hTC________'
-      list_index(counter) = counter
-c
-      counter = counter +1
-c
-c ### Data Pt. 4 ###
-c        
-!c 25. Parameter:  finite strain on/off
-!      list_name(counter) = 'finiteStrain____'
-!      list_index(counter) = counter
-!c
-!      counter = counter +1
-!c      
 c Retrieve the index
-      do i=1,maxval(list_index)
-          ! Look for the nameX in the list of names to find the index 'i'
-          if ( index(nameX,trim(list_name(i))) /= 0 ) then
-              cm_get_sth = list_index(i)
-              exit
-          elseif ( i == maxval(list_index) ) then
-c              if ( index(nameX,trim('lame_lambda_____')) /= 0 ) then
-c                  cm_get_sth = 1
-c              exit
-c              else
+      do i=1,n_rows
+        do j=1,n_entries_per_row
+          ! Look for the nameX in the list of names to find the index pair (i,j)
+          if ( index(nameX,trim(list_name(i,j))) /= 0 ) then
+              index_pair(1) = i
+              index_pair(2) = j
+              return ! end both loops and return "index_pair"
+          elseif ( i == n_rows .AND. j==n_entries_per_row ) then
             write(*,*) "cm_get_sth<< Could not find the nameX:", nameX
-                  pause
-c              endif
+            stop
           endif
+        enddo
       enddo
 c
       end function cm_get_sth

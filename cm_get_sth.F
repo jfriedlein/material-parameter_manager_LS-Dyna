@@ -45,8 +45,12 @@ c Hardening stress hardStress_R_inf
       list_name(1,12) = 'hardStress_R_inf'
 c Exp. hardening modulus hardMod_K_exp
       list_name(1,13) = 'hardMod_K_exp___'
+c Exponent for "exp" part
+      list_name(1,14) = 'expExponent_b___'
 c Exponent for "linear" part
-      list_name(1,14) = 'hardExponent_n__'
+      list_name(1,15) = 'hardExponent_n__'
+c ID of load curve
+      list_name(1,16) = 'loadCurve_ID____'
 c
 c ############################## Data Pt. 3 ############################
 c kinematic plastic hardening

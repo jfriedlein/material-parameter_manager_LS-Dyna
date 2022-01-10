@@ -9,4 +9,4 @@ c
        cm_all(1,1:48) = cm(1:48)
        cm_all(2,1:48) = cma(1:48)
 c
-      end
+      end subroutine

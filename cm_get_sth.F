@@ -79,6 +79,10 @@ c damage
 c
 c damage type
       list_name(1,33) = 'dmg_type_______'
+c regularisation parameter
+      list_name(1,34) = 'regParam_______'
+c penalty parameter
+      list_name(1,35) = 'penParam_______'
 c h_TC for MCR
       list_name(1,36) = 'MCR_hTC________'
 c
@@ -100,7 +104,7 @@ c Hill coefficient "h_23" or Yld91 "f"
 c Hill coefficient "h_31" or Yld91 "g"
       list_name(2,6) = 'aniso_coeff_31__'
 c
-c ############################## Data Pt. 1 ############################
+c ############################## Data Pt. 2 ############################
 c additional anisotropy coefficients
 c Hill coefficient "h_11" for stress
       list_name(2,9)  = 'aniso_coeff_11_2'
@@ -115,7 +119,7 @@ c Hill coefficient "h_23" for stress
 c Hill coefficient "h_31" for stress
       list_name(2,14) = 'aniso_coeff_31_2'
 c
-c ############################## Data Pt. 2 ############################
+c ############################## Data Pt. 3 ############################
 c additional damage parameters
 c damage saturation parameter eta1
       list_name(2,17) = 'dmg_prm_eta1___'

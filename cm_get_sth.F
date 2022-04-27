@@ -30,12 +30,14 @@ c Bulk modulus kappa
 c Second Lame parameter shearMod_mu
       list_name(1,2) = 'shearMod_mu_____'
 c hsv-version
+      list_name(1,7) = 'hsv_version_____'
+c cm-version
       list_name(1,8) = 'cm_version______'
 c
 c ############################## Data Pt. 2 ############################
 c plasticity and isotropic hardening
 c
-c Hardening type hardening_type
+c Isotropic hardening type hardening_type
       list_name(1,9) = 'hardening_type__'
 c Yield stress yieldStress
       list_name(1,10) = 'yieldStress_____'
@@ -54,6 +56,23 @@ c ID of load curve
 c
 c ############################## Data Pt. 3 ############################
 c kinematic plastic hardening
+c
+c Kinematic hardening type kin_hard_type
+      list_name(1,17) = 'kin_hard_type___'
+c Number of back stresses
+      list_name(1,18) = 'n_back_stresses_'
+c 1. Back stress: k_1
+      list_name(1,19) = 'backStr1_K1_____'      
+c 1. Back stress: k_2
+      list_name(1,20) = 'backStr1_K2_____'   
+c 2. Back stress: k_1
+      list_name(1,21) = 'backStr2_K1_____'   
+c 2. Back stress: k_2
+      list_name(1,22) = 'backStr2_K2_____'   
+c 3. Back stress: k_1
+      list_name(1,23) = 'backStr3_K1_____'   
+c 3. Back stress: k_2
+      list_name(1,24) = 'backStr3_K2_____'   
 c ...
 c
 c ############################## Data Pt. 4 ############################
@@ -83,8 +102,16 @@ c regularisation parameter
       list_name(1,34) = 'regParam_______'
 c penalty parameter
       list_name(1,35) = 'penParam_______'
-c h_TC for MCR
-      list_name(1,36) = 'MCR_hTC________'
+c non-local type
+      list_name(1,36) = 'nonLoc_type____'
+c
+      list_name(1,37) = 'dmg_fnc________'
+c  h_TC for MCR
+      list_name(1,38) = 'MCR_hTC________'
+c
+      list_name(1,39) = '_______________'
+c
+      list_name(1,40) = '_______________'
 c
 c
 c ################################# cma ################################

@@ -29,6 +29,10 @@ c Bulk modulus kappa
       list_name(1,1) ='bulkMod_kappa___'
 c Second Lame parameter shearMod_mu
       list_name(1,2) = 'shearMod_mu_____'
+c solution algorithm for local iterations
+      list_name(1,5) = 'sol_algo________'   
+c defoGrad-Offset
+      list_name(1,6) = 'defoGrad_offset_'      
 c hsv-version
       list_name(1,7) = 'hsv_version_____'
 c cm-version
@@ -109,7 +113,7 @@ c
 c  h_TC for MCR
       list_name(1,38) = 'MCR_hTC________'
 c
-      list_name(1,39) = '_______________'
+      list_name(1,39) = 'element_delete_'
 c
       list_name(1,40) = '_______________'
 c
@@ -174,7 +178,7 @@ c Retrieve the index
               return ! end both loops and return "index_pair"
           elseif ( i == n_rows .AND. j==n_entries_per_row ) then
             write(*,*) "cm_get_sth<< Could not find the nameX:", nameX
-            stop
+            call cstop('E R R O R  T E R M I N A T I O N')
           endif
         enddo
       enddo

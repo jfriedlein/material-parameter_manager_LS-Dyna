@@ -149,6 +149,10 @@ c Hill coefficient "h_23" for stress
       list_name(2,13) = 'aniso_coeff_23_2'
 c Hill coefficient "h_31" for stress
       list_name(2,14) = 'aniso_coeff_31_2'
+c -
+      !list_name(2,15) = ''
+c -
+      !list_name(2,16) = ''            
 c
 c ############################## Data Pt. 3 ############################
 c additional damage parameters
@@ -164,6 +168,28 @@ c threshold for damage initiation
       list_name(2,21) = 'dmg_threshold__'
 c exponent for damage evolution
       list_name(2,22) = 'dmg_exponent___'
+c -
+      !list_name(2,23) = ''
+c -
+      !list_name(2,24) = ''          
+c ############################## Data Pt. 4 ############################
+c additional damage parameters
+c damage parameter 1
+      list_name(2,25) = 'dmg_prm_1______'
+c damage parameter 2
+      list_name(2,26) = 'dmg_prm_2______'
+c damage parameter 3
+      list_name(2,27) = 'dmg_prm_3______'
+c damage parameter 4
+      list_name(2,28) = 'dmg_prm_4______'
+c damage parameter 5
+      list_name(2,29) = 'dmg_prm_5______'
+c damage parameter 6
+      list_name(2,30) = 'dmg_prm_6______'
+c damage parameter 7
+      list_name(2,31) = 'dmg_prm_7______'
+c damage parameter 8
+      list_name(2,32) = 'dmg_prm_8______'      
 c
 c
 c ######################## retrieve the correct index ##################

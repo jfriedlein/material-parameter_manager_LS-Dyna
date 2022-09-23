@@ -29,6 +29,8 @@ c Bulk modulus kappa
       list_name(1,1) ='bulkMod_kappa___'
 c Second Lame parameter shearMod_mu
       list_name(1,2) = 'shearMod_mu_____'
+c Level of debugging output
+      list_name(1,4) = 'debugging_out___'
 c solution algorithm for local iterations
       list_name(1,5) = 'sol_algo________'   
 c defoGrad-Offset
@@ -102,10 +104,10 @@ c damage
 c
 c damage type
       list_name(1,33) = 'dmg_type_______'
-c regularisation parameter
-      list_name(1,34) = 'regParam_______'
+c damage coupling type
+      list_name(1,34) = 'dmg_coupling___'
 c penalty parameter
-      list_name(1,35) = 'penParam_______'
+      list_name(1,35) = 'Mval___________'
 c non-local type
       list_name(1,36) = 'nonLoc_type____'
 c
@@ -115,7 +117,7 @@ c  h_TC for MCR
 c
       list_name(1,39) = 'element_delete_'
 c
-      list_name(1,40) = '_______________'
+      list_name(1,40) = 'SPLE___________'
 c
 c
 c ################################# cma ################################

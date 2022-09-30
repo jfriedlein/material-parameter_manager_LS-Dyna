@@ -26,7 +26,7 @@ c ############################## Data Pt. 1 ############################
 c Elasticity, general settings
 c    
 c Bulk modulus kappa
-      list_name(1,1) ='bulkMod_kappa___'
+      list_name(1,1) = 'bulkMod_kappa___'
 c Second Lame parameter shearMod_mu
       list_name(1,2) = 'shearMod_mu_____'
 c Level of debugging output
@@ -38,13 +38,13 @@ c defoGrad-Offset
 c hsv-version
       list_name(1,7) = 'hsv_version_____'
 c cm-version
-      list_name(1,8) = 'cm_version______'
+      list_name(1,8) = 'LoE_analysis___' !'cm_version______'
 c
 c ############################## Data Pt. 2 ############################
 c plasticity and isotropic hardening
 c
 c Isotropic hardening type hardening_type
-      list_name(1,9) = 'hardening_type__'
+      list_name(1,9)  = 'hardening_type__'
 c Yield stress yieldStress
       list_name(1,10) = 'yieldStress_____'
 c Hardening modulus hardMod_K

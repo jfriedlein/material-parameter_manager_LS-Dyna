@@ -98,6 +98,8 @@ c Vector for normal direction: y-component
       list_name(1,30) = 'normal_dir_y____'
 c Vector for normal direction: z-component
       list_name(1,31) = 'normal_dir_z____'
+c 
+      !list_name(1,32)
 c
 c ############################## Data Pt. 5 ############################
 c damage

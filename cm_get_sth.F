@@ -173,7 +173,7 @@ c threshold for damage initiation
 c exponent for damage evolution
       list_name(2,22) = 'dmg_exponent___'
 c -
-      !list_name(2,23) = ''
+      list_name(2,23) = 'dmg_max________'
 c -
       !list_name(2,24) = ''          
 c ############################## Data Pt. 4 ############################

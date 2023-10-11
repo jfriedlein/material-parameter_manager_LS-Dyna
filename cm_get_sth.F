@@ -25,39 +25,41 @@ c
 c ############################## Data Pt. 1 ############################
 c Elasticity, general settings
 c    
-c Bulk modulus kappa
+c p1 - Bulk modulus kappa
       list_name(1,1) = 'bulkMod_kappa___'
-c Second Lame parameter shearMod_mu
+c p2 - Second Lame parameter shearMod_mu
       list_name(1,2) = 'shearMod_mu_____'
-c Level of debugging output
+c p3 - -
+      !list_name(1,3) = ''
+c p4 - Level of debugging output
       list_name(1,4) = 'debugging_out___'
-c solution algorithm for local iterations
+c p5 - solution algorithm for local iterations
       list_name(1,5) = 'sol_algo________'   
-c defoGrad-Offset
+c p6 - defoGrad-Offset
       list_name(1,6) = 'defoGrad_offset_'      
-c hsv-version
+c p7 - hsv-version
       list_name(1,7) = 'hsv_version_____'
-c cm-version
+c p8 - cm-version
       list_name(1,8) = 'LoE_analysis___' !'cm_version______'
 c
 c ############################## Data Pt. 2 ############################
 c plasticity and isotropic hardening
-c
-c Isotropic hardening type hardening_type
+c @todo Rename to Plasticity Parameter PP1 ... PP8
+c p1 - Isotropic hardening type hardening_type
       list_name(1,9)  = 'hardening_type__'
-c Yield stress yieldStress
+c p2 - Yield stress yieldStress
       list_name(1,10) = 'yieldStress_____'
-c Hardening modulus hardMod_K
+c p3 - Hardening modulus hardMod_K
       list_name(1,11) = 'hardMod_K_______'
-c Hardening stress hardStress_R_inf
+c p4 - Hardening stress hardStress_R_inf
       list_name(1,12) = 'hardStress_R_inf'
-c Exp. hardening modulus hardMod_K_exp
+c p5 - Exp. hardening modulus hardMod_K_exp
       list_name(1,13) = 'hardMod_K_exp___'
-c Exponent for "exp" part
+c p6 - Exponent for "exp" part
       list_name(1,14) = 'expExponent_b___'
-c Exponent for "linear" part
+c p7 - Exponent for "linear" part
       list_name(1,15) = 'hardExponent_n__'
-c ID of load curve
+c p8 - ID of load curve
       list_name(1,16) = 'loadCurve_ID____'
 c
 c ############################## Data Pt. 3 ############################
@@ -112,13 +114,13 @@ c penalty parameter
       list_name(1,35) = 'Mval___________'
 c non-local type
       list_name(1,36) = 'nonLoc_type____'
-c
+c damage function
       list_name(1,37) = 'dmg_fnc________'
-c  h_TC for MCR
+c h_TC for MCR
       list_name(1,38) = 'MCR_hTC________'
-c
+c element deletion
       list_name(1,39) = 'element_delete_'
-c
+c switching point linear to exp
       list_name(1,40) = 'SPLE___________'
 c
 c

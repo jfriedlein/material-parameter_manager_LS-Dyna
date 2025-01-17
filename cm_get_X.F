@@ -31,7 +31,7 @@ c
 c
       cm_version = int( cm_all( 1,2 ) )
 c
-      if ( cm_version>0 .and. cm_version<=10 ) then
+      if ( cm_version>0 .and. cm_version<=100 ) then
          call cmManager_name2iX (char2int(nameX),cm_version,index_val)
       ! @todo This is dangerous, because cm_all(1,2) previously was the shearMod
       !       In case shearMod is e.g. 5.5 then this would be cm_version=5, but should be the old cm_get_sth
